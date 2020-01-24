@@ -25,21 +25,20 @@ public class Solution {
                 minLength = word.length();
             }
         }
-        List<String> concatenated = new ArrayList<>();
+        List<String> concatenatedWords = new ArrayList<>();
         for (String word : words) {
             if (word.length() != 0 && isConcatenatedWord(word, set, minLength, 0)) {
-                concatenated.add(word);
+                concatenatedWords.add(word);
             }
         }
-        concatenated.sort((arg1, arg2) -> {
+        concatenatedWords.sort((arg1, arg2) -> {
             return arg2.length() - arg1.length();
         });
-        return concatenated;
+        return concatenatedWords;
     }
 
     private boolean isConcatenatedWord(String word, Set<String> set, int minLength, int numberUnits) {
-        if (numberUnits > 0
-                && set.contains(word)) {
+        if (numberUnits > 0 && set.contains(word)) { // if numberUnits == 0, hence we just start out checking.
             return true;
         }
         int stringLength = word.length();
